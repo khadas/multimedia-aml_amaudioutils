@@ -23,6 +23,7 @@
 
 #include "AC3FrameScanner.h"
 #include "DTSFrameScanner.h"
+#include "MatFrameScanner.h"
 
 namespace android {
 
@@ -53,6 +54,9 @@ SPDIFEncoder::SPDIFEncoder(audio_format_t format)
         case AUDIO_FORMAT_DTS:
         case AUDIO_FORMAT_DTS_HD:
             mFramer = new DTSFrameScanner();
+            break;
+        case AUDIO_FORMAT_MAT:
+            mFramer = new MatFrameScanner();
             break;
         default:
             break;

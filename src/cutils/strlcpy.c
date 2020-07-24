@@ -16,7 +16,7 @@
 
 #include <sys/types.h>
 
-#if defined(__GLIBC__) || defined(_WIN32)
+//#if defined(__GLIBC__) || defined(_WIN32)
 
 #include <string.h>
 
@@ -55,4 +55,4 @@ strlcpy(char *dst, const char *src, size_t siz)
 	return(s - src - 1);	/* count does not include NUL */
 }
 
-#endif
+//#endif

@@ -5,6 +5,7 @@ OBJS=src/primitives.o \
 	src/spdif/BitFieldParser.o \
 	src/spdif/DTSFrameScanner.o \
 	src/spdif/FrameScanner.o \
+        src/spdif/MatFrameScanner.o \
 	src/spdif/SPDIFEncoder.o
 
 CUTILS_OBJS=src/cutils/hashmap.o \
@@ -13,7 +14,7 @@ CUTILS_OBJS=src/cutils/hashmap.o \
 	src/cutils/threads.o \
 	src/cutils/strlcpy.o
 
-CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I. -I./src -I./src/ -mfpu=neon -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -D_USE_NEON -DEXPORT=
+CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I. -I./src -I./src/ -mfpu=neon -DNDEBUG -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -D_USE_NEON -DEXPORT=
 LDFLAGS+=-llog -ldl -lrt -lpthread -lstdc++
 
 %.o: %.cpp
