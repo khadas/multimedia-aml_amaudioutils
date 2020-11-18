@@ -105,7 +105,7 @@ bool MatFrameScanner::parseHeader()
         mFrameSizeBytes = mHeaderLength;    // top crc, bottom length
         mFrameSizeBytes += payload_length;
         mFrameSizeBytes += 2;               // bottom crc
-        mChunkType == CHUNK_TYPE_METADATA;
+        mChunkType = CHUNK_TYPE_METADATA;
         mLastChunk = true;
     }
 
