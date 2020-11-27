@@ -32,7 +32,7 @@
 #endif
 
 // No definition needed for Android because we'll just pick up bionic's copy.
-#ifndef __ANDROID__
+#if !defined(__ANDROID__) || !defined(__GLIBC__) || __GLIBC__ < 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ < 30)
 pid_t gettid() {
 #if defined(__APPLE__)
   uint64_t tid;
