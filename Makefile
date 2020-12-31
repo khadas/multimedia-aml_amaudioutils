@@ -6,7 +6,8 @@ OBJS=src/primitives.o \
 	src/spdif/DTSFrameScanner.o \
 	src/spdif/FrameScanner.o \
         src/spdif/MatFrameScanner.o \
-	src/spdif/SPDIFEncoder.o
+	src/spdif/SPDIFEncoder.o \
+	src/IpcBuffer/IpcBuffer.o
 
 CUTILS_OBJS=src/cutils/hashmap.o \
 	src/cutils/properties.o \
@@ -14,7 +15,7 @@ CUTILS_OBJS=src/cutils/hashmap.o \
 	src/cutils/threads.o \
 	src/cutils/strlcpy.o
 
-CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I. -I./src -I./src/ -mfpu=neon -DNDEBUG -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -D_USE_NEON -DEXPORT=
+CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I./include/IpcBuffer -I. -I./src -mfpu=neon -DNDEBUG -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -D_USE_NEON -DEXPORT=
 LDFLAGS+=-llog -ldl -lrt -lpthread -lstdc++
 
 %.o: %.cpp
@@ -45,6 +46,9 @@ install:
 	done
 	for f in $(@D)/include/audio_utils/spdif/*.h; do \
 		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/audio_utils/spdif; \
+	done
+	for f in $(@D)/include/IpcBuffer/*.h; do \
+		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/IpcBuffer; \
 	done
 	for f in $(@D)/include/cutils/*.h; do \
 		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/cutils; \
