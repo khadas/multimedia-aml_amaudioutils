@@ -15,7 +15,13 @@ CUTILS_OBJS=src/cutils/hashmap.o \
 	src/cutils/threads.o \
 	src/cutils/strlcpy.o
 
-CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I./include/IpcBuffer -I. -I./src -mfpu=neon -DNDEBUG -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -D_USE_NEON -DEXPORT=
+#Allow to configure NEON support of SPEEX
+TOOLCHAIN_NEON_SUPPORT ?= y
+ifeq ($(TOOLCHAIN_NEON_SUPPORT),y)
+TOOLCHAIN_NEON_FLAGS = -mfpu=neon -D_USE_NEON
+endif
+
+CFLAGS+=-fPIC -O2 -I./include -I./include/speex -I./include/IpcBuffer -I. -I./src $(TOOLCHAIN_NEON_FLAGS) -DNDEBUG -DFIXED_POINT -DRESAMPLE_FORCE_FULL_SINC_TABLE -DEXPORT=
 LDFLAGS+=-llog -ldl -lrt -lpthread -lstdc++
 
 %.o: %.cpp
