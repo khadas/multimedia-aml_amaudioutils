@@ -152,5 +152,27 @@ void IpcBuffer_write(void *cb, const unsigned char *buf, int size)
   ((IpcBuffer *)(cb))->write_nb(buf, size);
 }
 
+uint8_t *IpcBuffer_get_ptr(const char *name)
+{
+  managed_shared_memory *shm = audio_server_shmem::getInstance();
+  IpcBuffer * cb = shm->find<IpcBuffer>(name).first;
+  if (cb) {
+    return cb->start_ptr();
+  }
+  return NULL;
+}
+
+uint64_t IpcBuffer_get_wr_pos(const char *name)
+{
+  managed_shared_memory *shm = audio_server_shmem::getInstance();
+  IpcBuffer * cb = shm->find<IpcBuffer>(name).first;
+  if (cb) {
+    uint64_t time, position;
+    cb->get_write_position(time, position);
+    return position;
+  }
+  return 0;
+}
+
 }
 
