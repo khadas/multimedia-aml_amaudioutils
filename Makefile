@@ -36,10 +36,10 @@ LDFLAGS+=-llog -ldl -lrt -lpthread -lstdc++
 all: libamaudioutils.so libcutils.so
 
 libamaudioutils.so: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^
+	$(CC) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS)
 
 libcutils.so: $(CUTILS_OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^
+	$(CC) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS)
 
 .PHONY: install
 install:
