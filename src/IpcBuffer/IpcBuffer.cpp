@@ -18,6 +18,8 @@ IpcBuffer::IpcBuffer(const char *name, size_t capacity)
   , capacity_(capacity)
   , name_(std::string(name))
   , wr_position_(0)
+  , blocking_(false)
+  , wr_time_(0)
 {
   managed_shared_memory *segment = audio_server_shmem::getInstance();
   void *shptr = segment->allocate(capacity);

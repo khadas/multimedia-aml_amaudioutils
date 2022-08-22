@@ -45,6 +45,7 @@ SPDIFEncoder::SPDIFEncoder(audio_format_t format)
   , mBitstreamNumber(0)
   , mPayloadBytesPending(0)
   , mScanning(true)
+  , mFrameSize(0)
 {
     switch(format) {
         case AUDIO_FORMAT_AC3:
