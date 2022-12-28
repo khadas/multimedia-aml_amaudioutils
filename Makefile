@@ -56,12 +56,6 @@ install:
 	for f in $(@D)/include/IpcBuffer/*.h; do \
 		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/IpcBuffer; \
 	done
-	for f in $(@D)/include/cutils/*.h; do \
-		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/cutils; \
-	done
-	for f in $(@D)/include/android/*.h; do \
-		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/android; \
-	done
 
 .PHONY: clean
 clean:
