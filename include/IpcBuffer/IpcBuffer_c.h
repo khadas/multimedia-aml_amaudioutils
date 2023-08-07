@@ -17,6 +17,22 @@ extern uint8_t *IpcBuffer_get_ptr(const char *name);
 
 extern uint64_t IpcBuffer_get_wr_pos(const char *name);
 
+extern size_t IpcBuffer_get_capacity(const char *name);
+
+extern void *IpcBuffer_get_by_name(const char *name);
+
+extern void IpcBuffer_set_water_level_byname(const char *name, size_t level);
+
+extern void IpcBuffer_inc_underrun_byname(const char *name);
+
+extern void IpcBuffer_add_silence_byname(const char *name, size_t size);
+
+extern void IpcBuffer_set_water_level(void *instance, size_t level);
+
+extern void IpcBuffer_inc_underrun(void *instance);
+
+extern void IpcBuffer_add_silence(void *instance, size_t size);
+
 #ifdef __cplusplus
 }
 #endif
