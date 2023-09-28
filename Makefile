@@ -1,12 +1,6 @@
 OBJS=src/primitives.o \
 	src/resampler.o \
 	src/speexresample/resample.o \
-	src/spdif/AC3FrameScanner.o \
-	src/spdif/BitFieldParser.o \
-	src/spdif/DTSFrameScanner.o \
-	src/spdif/FrameScanner.o \
-        src/spdif/MatFrameScanner.o \
-	src/spdif/SPDIFEncoder.o \
 	src/IpcBuffer/IpcBuffer.o
 
 CUTILS_OBJS=src/cutils/hashmap.o \
@@ -49,9 +43,6 @@ install:
 	install -m 644 -D libcutils.so -t $(TARGET_DIR)/usr/lib
 	for f in $(@D)/include/audio_utils/*.h; do \
 		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/audio_utils; \
-	done
-	for f in $(@D)/include/audio_utils/spdif/*.h; do \
-		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/audio_utils/spdif; \
 	done
 	for f in $(@D)/include/IpcBuffer/*.h; do \
 		install -m 644 -D $${f} -t $(STAGING_DIR)/usr/include/IpcBuffer; \

@@ -19,10 +19,7 @@
 
 #include <errno.h>
 #include <stdlib.h>
-
 #include <cutils/log.h>
-
-#include <system/audio.h>
 #include <audio_utils/resampler.h>
 #include <speex/speex_resampler.h>
 
