@@ -31,6 +31,8 @@ extern void IpcBuffer_set_water_level(void *instance, size_t level);
 
 extern void IpcBuffer_inc_underrun(void *instance);
 
+extern void IpcBuffer_setMeta(void *instance, uint64_t meta_64, uint32_t meta_32);
+
 extern void IpcBuffer_add_silence(void *instance, size_t size);
 
 #ifdef __cplusplus
